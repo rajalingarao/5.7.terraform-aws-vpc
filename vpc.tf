@@ -124,6 +124,19 @@ resource "aws_route" "database_route_nat" {
     #gateway_id = aws_internet_gateway.gw.id
     nat_gateway_id = aws_nat_gateway.nat.id
 }
+resource "aws_db_subnet_group" "default" {
+    name = "${local.resource_name}"
+    subnet_ids = aws_subnet.database[*].id
+
+    tags = merge(
+        var.common_tags,
+        var.database_subnet_group_tags,
+        {
+            Name = "${local.resource_name}"
+        }
+    )
+  
+}
 
 resource "aws_eip" "nat" {
     domain = "vpc"

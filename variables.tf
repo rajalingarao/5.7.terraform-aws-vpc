@@ -85,6 +85,11 @@ variable "database_route_table_tags" {
   default = { }
 }
 
+variable "database_subnet_group_tags" {
+    type = map
+    default = {}
+}
+
 ## NAT Gateway ##
 variable "nat_gateway_tags" {
   type = map
