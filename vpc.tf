@@ -125,7 +125,7 @@ resource "aws_route" "database_route_nat" {
     nat_gateway_id = aws_nat_gateway.nat.id
 }
 resource "aws_db_subnet_group" "default" {
-    name = "Expense-dev"
+    name = "expense-dev"
     subnet_ids = aws_subnet.database[*].id
 
     tags = merge(
